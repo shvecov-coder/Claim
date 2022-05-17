@@ -3,10 +3,10 @@ from django.db import models
 # Create your models here.
 
 class Claim(models.Model):
-    type_claim = models.IntegerField() # формат
-    select_claim = models.IntegerField() # номинация
-    name_claim = models.CharField(max_length=1024) # фио участника/название коллектива
-    parent_claim = models.CharField(max_length=1024) # преподаватель
+    type_claim = models.IntegerField()
+    select_claim = models.CharField(max_length=1024)
+    name_claim = models.CharField(max_length=1024)
+    parent_claim = models.CharField(max_length=1024)
     class_claim = models.IntegerField()
     concert_claim = models.CharField(max_length=1024)
     sity_claim = models.CharField(max_length=1024)

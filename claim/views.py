@@ -8,16 +8,13 @@ import random
 import docx
 
 # Create your views here.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def create_report(claims):
-    #test
     SAVE_NAME = str(random.randint(1, 1001)) + '.docx'
 
-    BASE_DIR = Path(__file__).resolve().parent.parent
-
     try:
-        dir = BASE_DIR / '/static/template_doc/программа_template.docx'
-        print(dir)
+        dir = os.path.abspath(str(BASE_DIR) + '/static/template_doc/программа_template.docx')
         currentDocument = docx.Document(dir)
     except FileNotFoundError:
         return
@@ -29,48 +26,27 @@ def create_report(claims):
         row.cells[0].width = docx.shared.Inches(0.3)
         row.cells[1].width = docx.shared.Inches(3.5)
     
-    hdr_cells = table.rows[0].cells
-    hdr_cells[1].paragraphs[0].add_run(claims[0].name_claim)
-
+    for i, claim in enumerate(claims):
+        hdr_cells = table.rows[i].cells
+        hdr_cells[0].paragraphs[0].add_run(str(i + 1)).bold = False
+        hdr_cells[1].paragraphs[0].add_run(claim.sity_claim).bold = True
+        hdr_cells[1].paragraphs[0].add_run('\n' + claim.name_claim + ', ')
+        hdr_cells[1].paragraphs[0].add_run(str(claim.class_claim) + ' кл. ')
+        hdr_cells[1].paragraphs[0].add_run('(' + str(claim.select_claim) + ')')
+        hdr_cells[1].paragraphs[0].add_run('\nпреп. ' + claim.parent_claim)
+        if claim.concert_claim != '':
+            hdr_cells[1].paragraphs[0].add_run('\nконц. ' + claim.concert_claim)
+        hdr_cells[2].text = claim.prog_claim
     try:
-        dir = str(BASE_DIR) + os.path.dirname('/static/temp_files/' + SAVE_NAME)
+        dir = os.path.abspath(str(BASE_DIR) + ('/static/temp_files/' + SAVE_NAME))
         currentDocument.save(dir)
     except:
         return
 
-'''
-def create_programm_from_sxml():
-    PATH_MAIN = ''
-    count_rows = 0
-
-    for i, row in enumerate(sheet.rows):
-        if i == 0:
-            continue
-        hdr_cells = table.rows[i - 1].cells
-        hdr_cells[0].paragraphs[0].add_run(str(i)).bold = False
-        hdr_cells[1].paragraphs[0].add_run(row[6].value).bold = True
-        if row[1].value is None:
-            break
-        hdr_cells[1].paragraphs[0].add_run('\n' + row[1].value + ', ')
-        if row[2].value != '-' and not row[2].value is None:
-            hdr_cells[1].paragraphs[0].add_run(str(row[2].value) + ' кл. ')
-        hdr_cells[1].paragraphs[0].add_run('(' + row[3].value + ')')
-        hdr_cells[1].paragraphs[0].add_run('\nпреп. ' + row[4].value)
-        if row[5].value != '-':
-            hdr_cells[1].paragraphs[0].add_run('\nконц. ' + row[5].value)
-        hdr_cells[2].text = row[7].value
-
-    name_file = 'tep' + '.docx'
-    try:
-        currentDocument.save(PATH_MAIN + '/' + name_file)
-    except:
-        return
-'''
-
 def index(request):
     if request.method == 'POST':
         type_cl = request.POST.get('type_claim')
-        select_cl = int(request.POST.get('select_claim'))
+        select_cl = request.POST.get('select_claim')
         name_cl = request.POST.get('name_claim')
         parent_cl = request.POST.get('parent_claim')
         class_cl = request.POST.get('class_claim')
