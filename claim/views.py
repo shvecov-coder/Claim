@@ -10,6 +10,7 @@ import docx
 # Create your views here.
 
 def create_report(claims):
+    #test
     SAVE_NAME = str(random.randint(1, 1001)) + '.docx'
 
     BASE_DIR = Path(__file__).resolve().parent.parent
