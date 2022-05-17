@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Claim</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="content">
+        <div class="requests">
+            <a href="?code=report">Создать программку</a>
+        </div>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>Формат</th>
+            <th>Номинация</th>
+            <th>Участник</th>
+            <th>Преподаватель</th>
+            <th>Класс</th>
+            <th>Концертмейстер</th>
+            <th>Заведение</th>
+            <th>Программа</th>
+            <th>Ссылка</th>
+        </tr>
+        {% for item in claims%}
+        <tr>
+            <th>{{item.id}}</th>
+            <th>{{item.type_claim}}</th>
+            <th>{{item.select_claim}}</th>
+            <th>{{item.name_claim}}</th>
+            <th>{{item.parent_claim}}</th>
+            <th>{{item.class_claim}}</th>
+            <th>{{item.concert_claim}}</th>
+            <th>{{item.sity_claim}}</th>
+            <th>{{item.prog_claim}}</th>
+            <th>{{item.url_claim}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+</body>
+</html>

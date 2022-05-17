@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиграем {% now 'Y' %}!</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="content">
+        <div class="claim">
+            <form method="post" name="claim" action="">
+                {% csrf_token %}
+                <h1>Заявка Поиграем {% now 'Y' %}</h1>
+                <div class="typeclaim">
+                    <p>Формат участия</p>
+                    <p><input type="radio" name="type_claim" value="0" checked>очный</p>
+                    <p><input type="radio" name="type_claim" value="1">видео</p>
+                </div>
+                <div class="selectclaim">
+                    <p>Номинация</p>
+                    <select size="1" name="select_claim">
+                        <option value="0">Баян</option>
+                        <option value="1">Аккордеон</option>
+                        <option value="2">Гитара</option>
+                        <option value="3">Гармонь</option>
+                        <option value="4">Домра</option>
+                        <option value="5">Балалайка</option>
+                        <option value="6">Ансамбль</option>
+                        <option value="7">Оркестр</option>
+                    </select>
+                </div>
+                <div class="nameclaim">
+                    <p>ФИО участника/название коллектива</p>
+                    <p><input type="text" name="name_claim"></p>
+                </div>
+                <div class="parentclaim">
+                    <p>Преподаватель/руководитель</p>
+                    <p><input type="text" name="parent_claim"></p>
+                </div>
+                <div class="classclaim">
+                    <p>Класс</p>
+                    <p><input type="text" name="class_claim"></p>
+                </div>
+                <div class="concertclaim">
+                    <p>Концертмейcтер</p>
+                    <p><input type="text" name="concert_claim"></p>
+                </div>
+                <div class="sitytclaim">
+                    <p>Город/Учебное заведение</p>
+                    <p><input type="text" name="sity_claim"></p>
+                </div>
+                <div class="progclaim">
+                    <p>Программа</p>
+                    <p><textarea name="prog_claim" cols="32" rows="12"></textarea></p>
+                </div>
+                <div class="urlclaim">
+                    <p>Ссылка на видео</p>
+                    <p><input type="url" name="url_claim"></p>
+                </div>
+                <div class="submitclaim">
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

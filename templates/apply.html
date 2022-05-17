@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заявка № {{id}}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="content">
+        <div class="claim">
+            <form method="post" name="claim" action="">
+                {% csrf_token %}
+                <h1>Заявка № {{id}}!</h1>
+                <div class="typeclaim">
+                    <p>Формат участия</p>
+                    <p>{{type}}</p>
+                </div>
+                <div class="selectclaim">
+                    <p>Номинация</p>
+                    <p>{{select}}</p>
+                </div>
+                <div class="nameclaim">
+                    <p>ФИО участника/название коллектива</p>
+                    <p>{{name}}</p>
+                </div>
+                <div class="parentclaim">
+                    <p>Преподаватель/руководитель</p>
+                    <p>{{parent}}</p>
+                </div>
+                <div class="classclaim">
+                    <p>Класс</p>
+                    <p>{{class}}</p>
+                </div>
+                <div class="concertclaim">
+                    <p>Концертмейcтер</p>
+                    <p>{{concert}}</p>
+                </div>
+                <div class="sitytclaim">
+                    <p>Город/Учебное заведение</p>
+                    <p>{{sity}}</p>
+                </div>
+                <div class="progclaim">
+                    <p>Программа</p>
+                    <p>{{prog}}</p>
+                </div>
+                <div class="urlclaim">
+                    <p>Ссылка на видео</p>
+                    <p>{{url}}</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
