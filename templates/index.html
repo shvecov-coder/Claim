@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Поиграем {% now 'Y' %}!</title>
+	<title>Поиграем {% now 'Y' %}</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
@@ -29,11 +29,11 @@
 					{% csrf_token %}
 					<p class="type-claim">Формат участия</p>
 					<div class="form-checked">
-						<input id="checked-fulltime" type="radio" name="type_claim" value="0" checked>
+						<input id="checked-fulltime" type="radio" name="type_claim" value="очно" checked>
 						<label class="type-claim__text" for="checked-fulltime">Очная</label>
 					</div>
 					<div class="form-checked">
-						<input id="checked-online" type="radio" name="type_claim" value="1">
+						<input id="checked-online" type="radio" name="type_claim" value="видео">
 						<label for="checked-online">Видео</label>
 						<div class="toggle">
 							<input class="style-input" type="url" name="url_claim" placeholder="Ссылка" autocomplete="off">
