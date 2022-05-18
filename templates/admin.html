@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>All Claim</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
 </head>
 <body>
     <div class="content">
@@ -35,7 +35,7 @@
             <th>{{item.concert_claim}}</th>
             <th>{{item.sity_claim}}</th>
             <th>{{item.prog_claim}}</th>
-            <th>{{item.url_claim}}</th>
+            <th><a href="{{item.url_claim}}">{{item.url_claim}}</a></th>
         </tr>
         {% endfor %}
     </table>

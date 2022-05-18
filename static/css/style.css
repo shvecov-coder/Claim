@@ -1,75 +1,210 @@
-.content {
-	padding: 5px;
+/* Обнуление */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
 }
 
-.claim {
-	padding: 5px;
-	background-color: rgb(201, 201, 201);
-	width: 320px;
+body {
+	line-height: 1;
 }
 
-.typeclaim {
-	margin: 5px;
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
 
-.selectclaim {
-	width: 100%;
-	margin: 5px;
+nav ul {
+	list-style: none;
 }
 
-.submitclaim {
-	width: 100%;
-	margin: 5px;
+blockquote, q {
+	quotes: none;
 }
 
-.nameclaim {
-	width: auto;
-	margin: 5px;
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
 }
 
-.parentclaim {
-	width: 100%;
-	margin: 5px;
+a {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
 }
 
-.classclaim {
-	width: 100%;
-	margin: 5px;
+/* change colours to suit your needs */
+ins {
+	background-color: #ff9;
+	color: #000;
+	text-decoration: none;
 }
 
-.concertclaim {
-	width: 100%;
-	margin: 5px;
+/* change colours to suit your needs */
+mark {
+	background-color: #ff9;
+	color: #000;
+	font-style: italic;
+	font-weight: bold;
 }
 
-.sitytclaim {
-	width: 100%;
-	margin: 5px;
+del {
+	text-decoration: line-through;
 }
 
-.progclaim {
-	width: 100%;
-	margin: 5px;
+abbr[title], dfn[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
 }
 
-.urlclaim {
-	width: 100%;
-	margin: 5px;
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-p {
-	margin: 5px;
-	color: rgb(53, 53, 53);
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #cccccc;
+	margin: 1em 0;
+	padding: 0;
 }
 
-h1 {
+input, select {
+	vertical-align: middle;
+}
+
+/* ------------ */
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: 'Oswald', sans-serif;
+	font-size: 18px;
+	line-height: 27px;
+	font-style: normal;
+	background-color: #FFFEEB;
+	color: #fff;
+}
+
+.container {
+	max-width: 530px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.header .title {
+	color: #000;
+	padding-top: 40px;
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 95px;
 	text-align: center;
-	margin: 5px;
-	font-size: 24px;
-	font-family: sans-serif;
-	color: rgb(53, 53, 53);
+	text-transform: uppercase;
+	margin-bottom: 70px;
 }
 
-select {
-	width: 150px;
+.title span {
+	color: #E21C26;
+}
+
+.claim__inner {
+	padding: 20px 40px 30px;
+	background-color: rgba(24, 33, 52, 0.7);
+	box-shadow: 0 -5px 0 #3adbfd;
+	border-radius: 0 0 10px 10px;
+	margin-bottom: 100px;
+}
+
+.claim__inner .claim__title {
+	font-size: 40px;
+	line-height: 59px;
+	color: #2ca8c6;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.form {
+	font-size: 18px;
+	line-height: 27px;
+}
+
+
+.style-input, .combo-box, .form-textarea, .form-submit {
+	font-family: 'Oswald', sans-serif;
+	width: 100%;
+	height: 50px;
+	font-size: 18px;
+	margin-top: 25px;
+	border-radius: 4px;
+	border: 0;
+	padding: 0 20px;
+	color: #000;
+	outline: none;
+	border-bottom: 4px solid transparent;
+	transition: border .3s;
+}
+
+.form-textarea {
+	height: 100px;
+	resize: none;
+	padding: 10px 20px;
+}
+
+.form-submit {
+	padding: 13px 30px;
+	margin: 5px 0 20px 0;
+	font-size: 17px;
+	color: #fff;
+	background-color: #2ca8c6;
+	border: none;
+	border-bottom: 4px solid #6ee9;
+	cursor: pointer;
+	margin-top: 25px;
+}
+
+.style-input:focus, .form-textarea:focus, combo-box:focus {
+	border-bottom: 3px solid #3adbfd;
+}
+
+.form-submit:hover {
+	transition: all 0.5s;
+	background: #fff;
+	color: #2c236c;
+}
+
+.form-checked .toggle {
+	display: none;
+}
+
+.form-checked input[type=radio]:checked~.toggle,
+.form-checked input[type=checkbox]:checked~.toggle {
+	display: block;
 }

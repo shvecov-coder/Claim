@@ -1,68 +1,88 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Поиграем {% now 'Y' %}!</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Поиграем {% now 'Y' %}!</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
-    <div class="content">
-        <div class="claim">
-            <form method="post" name="claim" action="">
-                {% csrf_token %}
-                <h1>Заявка Поиграем {% now 'Y' %}</h1>
-                <div class="typeclaim">
-                    <p>Формат участия</p>
-                    <p><input type="radio" name="type_claim" value="0" checked>очный</p>
-                    <p><input type="radio" name="type_claim" value="1">видео</p>
-                </div>
-                <div class="selectclaim">
-                    <p>Номинация</p>
-                    <select size="1" name="select_claim">
-                        <option value="баян">Баян</option>
-                        <option value="аккордеон">Аккордеон</option>
-                        <option value="гитара">Гитара</option>
-                        <option value="гармонь">Гармонь</option>
-                        <option value="домра">Домра</option>
-                        <option value="балалайка">Балалайка</option>
-                        <option value="ансамбль">Ансамбль</option>
-                        <option value="оркестр">Оркестр</option>
-                    </select>
-                </div>
-                <div class="nameclaim">
-                    <p>ФИО участника/название коллектива</p>
-                    <p><input type="text" name="name_claim"></p>
-                </div>
-                <div class="parentclaim">
-                    <p>Преподаватель/руководитель</p>
-                    <p><input type="text" name="parent_claim"></p>
-                </div>
-                <div class="classclaim">
-                    <p>Класс</p>
-                    <p><input type="text" name="class_claim"></p>
-                </div>
-                <div class="concertclaim">
-                    <p>Концертмейcтер</p>
-                    <p><input type="text" name="concert_claim"></p>
-                </div>
-                <div class="sitytclaim">
-                    <p>Город/Учебное заведение</p>
-                    <p><input type="text" name="sity_claim"></p>
-                </div>
-                <div class="progclaim">
-                    <p>Программа</p>
-                    <p><textarea name="prog_claim" cols="32" rows="12"></textarea></p>
-                </div>
-                <div class="urlclaim">
-                    <p>Ссылка на видео</p>
-                    <p><input type="url" name="url_claim"></p>
-                </div>
-                <div class="submitclaim">
-                    <input type="submit">
-                </div>
-            </form>
-        </div>
-    </div>
+	<header class="header">
+		<h1 class="title">
+			Поиграем <span>{% now 'Y' %}</span>
+		</h1>
+	</header>
+	<section class="claim">
+		<div class="container">
+			<div class="claim__inner">
+				<h2 class="claim__title">
+					Заявка на участие
+				</h2>
+				<form class="form" method="post" name="claim" action="">
+					{% csrf_token %}
+					<p class="type-claim">Формат участия</p>
+					<div class="form-checked">
+						<input id="checked-fulltime" type="radio" name="type_claim" value="0" checked>
+						<label class="type-claim__text" for="checked-fulltime">Очная</label>
+					</div>
+					<div class="form-checked">
+						<input id="checked-online" type="radio" name="type_claim" value="1">
+						<label for="checked-online">Видео</label>
+						<div class="toggle">
+							<input class="style-input" type="url" name="url_claim" placeholder="Ссылка" autocomplete="off">
+						</div>
+					</div>
+					<div class="form-input">
+						<input class="style-input" type="text" name="name_claim"
+							placeholder="ФИО участника / название коллектива" autocomplete="off">
+					</div>
+					<div class="form-input">
+						<input class="style-input" type="text" name="class_claim" placeholder="Класс / Курс"
+							autocomplete="off">
+					</div>
+					<div class="form-input">
+						<select class="combo-box" name="select_claim">
+							<option disabled selected hidden>Выберите номинацию</option>
+							<option value="баян">Баян</option>
+							<option value="аккордеон">Аккордеон</option>
+							<option value="гитара">Гитара</option>
+							<option value="гармонь">Гармонь</option>
+							<option value="домра">Домра</option>
+							<option value="балалайка">Балалайка</option>
+							<option value="ансамбль">Ансамбль</option>
+							<option value="оркестр">Оркестр</option>
+						</select>
+					</div>
+					<div class="form-input">
+						<input class="style-input" type="text" name="parent_claim" placeholder="Преподаватель / Руководитель"
+							autocomplete="off">
+					</div>
+					<div class="form-input">
+						<input class="style-input" type="text" name="concert_claim" placeholder="Концертмейстер"
+							autocomplete="off">
+					</div>
+					<div class="form-input">
+						<input class="style-input" type="text" name="sity_claim"
+							placeholder="Город / учебное заведение" autocomplete="off"> <!--ИСПРОВИТЬ SITY на CITY-->
+					</div>
+					<div class="form-input">
+						<textarea class="form-textarea" name="prog_claim" cols="30" rows="30"
+							placeholder="Программа"></textarea>
+					</div>
+					<div class="form-input">
+						<input class="form-submit" type="submit" name="submit" value="Подать заявку">
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
 </body>
+
 </html>

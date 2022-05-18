@@ -1,0 +1,75 @@
+.content {
+	padding: 5px;
+}
+
+.claim {
+	padding: 5px;
+	background-color: rgb(201, 201, 201);
+	width: 320px;
+}
+
+.typeclaim {
+	margin: 5px;
+}
+
+.selectclaim {
+	width: 100%;
+	margin: 5px;
+}
+
+.submitclaim {
+	width: 100%;
+	margin: 5px;
+}
+
+.nameclaim {
+	width: auto;
+	margin: 5px;
+}
+
+.parentclaim {
+	width: 100%;
+	margin: 5px;
+}
+
+.classclaim {
+	width: 100%;
+	margin: 5px;
+}
+
+.concertclaim {
+	width: 100%;
+	margin: 5px;
+}
+
+.sitytclaim {
+	width: 100%;
+	margin: 5px;
+}
+
+.progclaim {
+	width: 100%;
+	margin: 5px;
+}
+
+.urlclaim {
+	width: 100%;
+	margin: 5px;
+}
+
+p {
+	margin: 5px;
+	color: rgb(53, 53, 53);
+}
+
+h1 {
+	text-align: center;
+	margin: 5px;
+	font-size: 24px;
+	font-family: sans-serif;
+	color: rgb(53, 53, 53);
+}
+
+select {
+	width: 150px;
+}
