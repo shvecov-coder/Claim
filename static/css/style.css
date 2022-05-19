@@ -110,7 +110,7 @@ body {
 	font-size: 18px;
 	line-height: 27px;
 	font-style: normal;
-	background-color: #FFFEEB;
+	background: radial-gradient(ellipse at 50% 50%, #fde907 0%, #e21c26 76%);
 	color: #fff;
 }
 
@@ -120,34 +120,36 @@ body {
 	margin: 0 auto;
 }
 
-.header .title {
-	color: #000;
-	padding-top: 40px;
-	font-weight: 700;
-	font-size: 64px;
-	line-height: 95px;
+.header .subtitle {
 	text-align: center;
-	text-transform: uppercase;
-	margin-bottom: 70px;
+	padding: 20px 50px 0;
 }
 
-.title span {
+.header .title {
 	color: #E21C26;
+	padding-top: 5px;
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 80px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 30px;
+	-webkit-text-stroke: 2px white;
 }
 
 .claim__inner {
 	padding: 20px 40px 30px;
 	background-color: rgba(24, 33, 52, 0.7);
-	box-shadow: 0 -5px 0 #3adbfd;
+	box-shadow: 0 -5px 0 #FDE907;
 	border-radius: 0 0 10px 10px;
 	margin-bottom: 100px;
 }
 
 .claim__inner .claim__title {
 	font-size: 40px;
-	line-height: 59px;
-	color: #2ca8c6;
-	margin-bottom: 20px;
+	line-height: 40px;
+	color: #FDE907;
+	margin-bottom: 10px;
 	text-align: center;
 }
 
@@ -162,7 +164,7 @@ body {
 	width: 100%;
 	height: 50px;
 	font-size: 18px;
-	margin-top: 25px;
+	margin-top: 15px;
 	border-radius: 4px;
 	border: 0;
 	padding: 0 20px;
@@ -179,19 +181,19 @@ body {
 }
 
 .form-submit {
-	padding: 13px 30px;
-	margin: 5px 0 20px 0;
-	font-size: 17px;
+	padding: 15px 30px;
+	margin: 15px 0;
+	font-size: 18px;
+	line-height: 18px;
 	color: #fff;
-	background-color: #2ca8c6;
+	background-color: #E21C26;
 	border: none;
-	border-bottom: 4px solid #6ee9;
+	border-bottom: 4px solid #FDE907;
 	cursor: pointer;
-	margin-top: 25px;
 }
 
 .style-input:focus, .form-textarea:focus, combo-box:focus {
-	border-bottom: 3px solid #3adbfd;
+	border-bottom: 3px solid #E21C26;
 }
 
 .form-submit:hover {
