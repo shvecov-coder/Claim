@@ -129,8 +129,8 @@ body {
 	color: #E21C26;
 	padding-top: 5px;
 	font-weight: 700;
-	font-size: 64px;
-	line-height: 80px;
+	font-size: 50px;
+    line-height: 55px;
 	text-align: center;
 	text-transform: uppercase;
 	margin-bottom: 30px;
@@ -181,6 +181,9 @@ body {
 }
 
 .form-submit {
+	display: block;
+	text-decoration: none;
+	text-align: center;
 	padding: 15px 30px;
 	margin: 15px 0;
 	font-size: 18px;
@@ -209,4 +212,21 @@ body {
 .form-checked input[type=radio]:checked~.toggle,
 .form-checked input[type=checkbox]:checked~.toggle {
 	display: block;
+}
+
+.claim__confirm {
+	list-style: none;
+}
+
+.claim__confirm-item {
+	color: #FDE907;
+}
+.claim__confirm-item span {
+	display: block;
+	margin-bottom: 10px;
+	color: white;
+}
+
+.claim__confirm-item:last-child span{
+	margin-bottom: 0;
 }

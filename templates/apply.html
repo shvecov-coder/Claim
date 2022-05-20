@@ -4,10 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <title>Заявка № {{id}}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="content">
+    <header class="header">
+		<div class="container">
+			<h3 class="subtitle">Международный фестиваль исполнителей на русских народных инструмент</h3>
+			<h1 class="title">
+				Поиграем {% now 'Y' %}
+			</h1>
+		</div>
+	</header>
+    <section class="claim">
+		<div class="container">
+			<div class="claim__inner">
+				<h2 class="claim__title">
+					Заявка № {{id}}!
+				</h2>
+				<form method="post" name="claim" action="">
+					{% csrf_token %}
+                    <ul class="claim__confirm">
+                        <li class="claim__confirm-item">
+                            Формат участия:
+                            <span>
+                                {{type}}
+                            </span>
+                        </li>
+                        <li class="claim__confirm-item">
+                            ФИО участника / название коллектива:
+                            <span>
+                                {{name}}
+                            </span>
+                        </li>
+                        <li class="claim__confirm-item">
+                            Класс / Курс:
+                            <span>
+                                {{class}}
+                            </span>
+                        </li>
+                        <li class="claim__confirm-item">
+                            Номинация:
+                            <span>
+                                {{select}}
+                            </span>
+                        </li>
+                        <li class="claim__confirm-item">
+                            Преподаватель / Руководитель:
+                            <span>
+                                {{parent}}
+                            </span>
+                        </li>
+                        <li class="claim__confirm-item">
+                            Концертмейстер:
+                            <span>
+                                {{concert}}
+                            </span>
+                        </li>
+                        <li class="claim__confirm-item">
+                            Город / учебное заведение:
+                            <span>
+                                {{sity}}
+                            </span>
+                        </li>
+                        <li class="claim__confirm-item">
+                            Программа:
+                            <span>
+                                {{prog}}
+                            </span>
+                        </li>
+                        <li class="claim__confirm-item">
+                            Ссылка на видео:
+                            <span>
+                                {{url}}
+                            </span>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- <div class="content">
         <div class="claim">
             <form method="post" name="claim" action="">
                 {% csrf_token %}
@@ -50,6 +127,6 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
 </body>
 </html>

@@ -21,7 +21,6 @@
 				Поиграем {% now 'Y' %}
 			</h1>
 		</div>
-		
 	</header>
 	<section class="claim">
 		<div class="container">
@@ -40,7 +39,8 @@
 						<input id="checked-online" type="radio" name="type_claim" value="видео">
 						<label for="checked-online">Видео</label>
 						<div class="toggle">
-							<input class="style-input" type="url" name="url_claim" placeholder="Ссылка" autocomplete="off">
+							<input class="style-input" type="url" name="url_claim" placeholder="Ссылка"
+								autocomplete="off">
 						</div>
 					</div>
 					<div class="form-input">
@@ -65,16 +65,17 @@
 						</select>
 					</div>
 					<div class="form-input">
-						<input class="style-input" type="text" name="parent_claim" placeholder="Преподаватель / Руководитель"
-							autocomplete="off">
+						<input class="style-input" type="text" name="parent_claim"
+							placeholder="Преподаватель / Руководитель" autocomplete="off">
 					</div>
 					<div class="form-input">
 						<input class="style-input" type="text" name="concert_claim" placeholder="Концертмейстер"
 							autocomplete="off">
 					</div>
 					<div class="form-input">
-						<input class="style-input" type="text" name="sity_claim"
-							placeholder="Город / учебное заведение" autocomplete="off"> <!--ИСПРОВИТЬ SITY на CITY-->
+						<input class="style-input" type="text" name="sity_claim" placeholder="Город / учебное заведение"
+							autocomplete="off">
+						<!--ИСПРОВИТЬ SITY на CITY-->
 					</div>
 					<div class="form-input">
 						<textarea class="form-textarea" name="prog_claim" cols="30" rows="30"
@@ -82,11 +83,23 @@
 					</div>
 					<div class="form-input">
 						<input class="form-submit" type="submit" name="submit" value="Подать заявку">
+						<!-- <a class="form-submit" name="submit" href="javascript:VerificationClaim()">Подать заявку</a> -->
 					</div>
 				</form>
 			</div>
 		</div>
 	</section>
+
+	<script>
+		function VerificationClaim(){
+			if (confirm("Вы уверены?")) {
+				// Это если ДА
+			} else {
+				// Тут если нет
+			}
+		}
+
+	</script>
 </body>
 
 </html>
