@@ -1,3 +1,4 @@
+<!-- Version: 0.1 -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
@@ -16,7 +17,7 @@
 <body>
 	<header class="header">
 		<div class="container">
-			<h3 class="subtitle">Международный фестиваль исполнителей на русских народных инструмент</h3>
+			<h3 class="subtitle">Международный фестиваль исполнителей на русских народных инструментах</h3>
 			<h1 class="title">
 				Поиграем {% now 'Y' %}
 			</h1>
@@ -33,70 +34,64 @@
 					<p class="type-claim">Формат участия</p>
 					<div class="form-checked">
 						<input id="checked-fulltime" type="radio" name="type_claim" value="очно" checked>
+						<span></span>
 						<label class="type-claim__text" for="checked-fulltime">Очная</label>
 					</div>
 					<div class="form-checked">
 						<input id="checked-online" type="radio" name="type_claim" value="видео">
+						<span></span>
 						<label for="checked-online">Видео</label>
 						<div class="toggle">
 							<input class="style-input" type="url" name="url_claim" placeholder="Ссылка"
 								autocomplete="off">
 						</div>
 					</div>
-					<div class="form-input">
-						<input class="style-input" type="text" name="name_claim"
-							placeholder="ФИО участника / название коллектива" autocomplete="off">
-					</div>
-					<div class="form-input">
-						<input class="style-input" type="text" name="class_claim" placeholder="Класс / Курс"
-							autocomplete="off">
-					</div>
-					<div class="form-input">
-						<select class="combo-box" name="select_claim">
-							<option disabled selected hidden>Выберите номинацию</option>
-							<option value="баян">Баян</option>
-							<option value="аккордеон">Аккордеон</option>
-							<option value="гитара">Гитара</option>
-							<option value="гармонь">Гармонь</option>
-							<option value="домра">Домра</option>
-							<option value="балалайка">Балалайка</option>
-							<option value="ансамбль">Ансамбль</option>
-							<option value="оркестр">Оркестр</option>
-						</select>
-					</div>
-					<div class="form-input">
-						<input class="style-input" type="text" name="parent_claim"
-							placeholder="Преподаватель / Руководитель" autocomplete="off">
-					</div>
-					<div class="form-input">
-						<input class="style-input" type="text" name="concert_claim" placeholder="Концертмейстер"
-							autocomplete="off">
-					</div>
-					<div class="form-input">
-						<input class="style-input" type="text" name="sity_claim" placeholder="Город / учебное заведение"
-							autocomplete="off">
-						<!--ИСПРОВИТЬ SITY на CITY-->
-					</div>
-					<div class="form-input">
-						<textarea class="form-textarea" name="prog_claim" cols="30" rows="30"
-							placeholder="Программа"></textarea>
-					</div>
-					<div class="form-input">
-						<input class="form-submit" type="submit" name="submit" value="Подать заявку">
-						<!-- <a class="form-submit" name="submit" href="javascript:VerificationClaim()">Подать заявку</a> -->
-					</div>
-				</form>
+					<input class="style-input" type="text" name="name_claim"
+						placeholder="ФИО участника / название коллектива" autocomplete="off">
+					<input class="style-input" type="text" name="class_claim" placeholder="Класс / Курс"
+						autocomplete="off">
+					<select class="combo-box" name="select_claim">
+						<option disabled selected hidden>Выберите номинацию</option>
+						<option value="баян">Баян</option>
+						<option value="аккордеон">Аккордеон</option>
+						<option value="гитара">Гитара</option>
+						<option value="гармонь">Гармонь</option>
+						<option value="домра">Домра</option>
+						<option value="балалайка">Балалайка</option>
+						<option value="ансамбль">Ансамбль</option>
+						<option value="оркестр">Оркестр</option>
+					</select>
+					<input class="style-input" type="text" name="parent_claim"
+						placeholder="Преподаватель / Руководитель" autocomplete="off">
+					<input class="style-input" type="text" name="concert_claim" placeholder="Концертмейстер"
+						autocomplete="off">
+					<input class="style-input" type="text" name="sity_claim" placeholder="Город / учебное заведение"
+						autocomplete="off">
+					<!--ИСПРОВИТЬ SITY на CITY-->
+					<textarea class="form-textarea" name="prog_claim" cols="30" rows="30"
+						placeholder="Программа"></textarea>
+					<!-- <input class="form-submit" type="submit" name="submit" value="Подать заявку"> -->
+					<a class="form-submit" name="submit" href="javascript:VerificationClaim()">Подать заявку</a>
 			</div>
+			</form>
 		</div>
 	</section>
 
+	<script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
 	<script>
-		function VerificationClaim(){
-			if (confirm("Вы уверены?")) {
-				// Это если ДА
-			} else {
-				// Тут если нет
-			}
+		function VerificationClaim() {
+			Swal.fire({
+				icon: 'question',
+				title: 'Внимание!',
+				text: 'Перепроверите введенные данные на ошибки. Исправить их будет невозможно.',
+				showCancelButton: true,
+				confirmButtonText: 'Продолжить',
+				cancelButtonText: 'Закрыть',
+			}).then((result) => {
+				if (result.isConfirmed) {
+					// вот тут да
+				}
+			})
 		}
 
 	</script>
