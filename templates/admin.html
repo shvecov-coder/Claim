@@ -1,44 +1,54 @@
+<!-- Version: 0.2 -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>All Claim</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_style.css' %}">
 </head>
+
 <body>
-    <div class="content">
-        <div class="requests">
+    <section class="admin">
+        <!-- <div class="requests">
             <a href="?code=report">Создать программку</a>
-        </div>
-    <table border="1">
-        <tr>
-            <th>id</th>
-            <th>Формат</th>
-            <th>Номинация</th>
-            <th>Участник</th>
-            <th>Преподаватель</th>
-            <th>Класс</th>
-            <th>Концертмейстер</th>
-            <th>Заведение</th>
-            <th>Программа</th>
-            <th>Ссылка</th>
-        </tr>
-        {% for item in claims%}
-        <tr>
-            <th>{{item.id}}</th>
-            <th>{{item.type_claim}}</th>
-            <th>{{item.select_claim}}</th>
-            <th>{{item.name_claim}}</th>
-            <th>{{item.parent_claim}}</th>
-            <th>{{item.class_claim}}</th>
-            <th>{{item.concert_claim}}</th>
-            <th>{{item.sity_claim}}</th>
-            <th>{{item.prog_claim}}</th>
-            <th><a href="{{item.url_claim}}">{{item.url_claim}}</a></th>
-        </tr>
-        {% endfor %}
-    </table>
-    </div>
+        </div> -->
+        <a href="#" class="btn create__prog">Создать программу</a>
+        <a href="#" class="btn create__diplom">Создать Дипломы</a>
+        <a href="#" class="btn create_blagodarnost">Создать Благодарность</a>
+        <table class="list__claim">
+            <tr>
+                <th width="80px">id</th>
+                <th width="100px">Формат</th>
+                <th>Номинация</th>
+                <th>Участник</th>
+                <th>Преподаватель</th>
+                <th width="80px">Класс</th>
+                <th>Концертмейстер</th>
+                <th>Заведение</th>
+                <th>Программа</th>
+                <th>Ссылка</th>
+            </tr>
+            {% for item in claims%}
+            <tr>
+                <th>{{item.id}}</th>
+                <th>{{item.type_claim}}</th>
+                <th>{{item.select_claim}}</th>
+                <th>{{item.name_claim}}</th>
+                <th>{{item.parent_claim}}</th>
+                <th>{{item.class_claim}}</th>
+                <th>{{item.concert_claim}}</th>
+                <th>{{item.sity_claim}}</th>
+                <th>{{item.prog_claim}}</th>
+                <th><a href="{{item.url_claim}}">{{item.url_claim}}</a></th>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
 </body>
+
 </html>
