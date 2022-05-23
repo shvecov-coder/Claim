@@ -65,9 +65,8 @@
 						placeholder="Преподаватель / Руководитель" autocomplete="off">
 					<input class="style-input" type="text" name="concert_claim" placeholder="Концертмейстер"
 						autocomplete="off">
-					<input class="style-input" type="text" name="sity_claim" placeholder="Город / учебное заведение"
+					<input class="style-input" type="text" name="city_claim" placeholder="Город / учебное заведение"
 						autocomplete="off">
-					<!--ИСПРОВИТЬ SITY на CITY-->
 					<textarea class="form-textarea" name="prog_claim" cols="30" rows="30"
 						placeholder="Программа"></textarea>
 					<!-- <input class="form-submit" type="submit" name="submit" value="Подать заявку"> -->
@@ -89,7 +88,10 @@
 				cancelButtonText: 'Закрыть',
 			}).then((result) => {
 				if (result.isConfirmed) {
-					// вот тут да
+					await fetch('127.0.0.1:8000', {
+						method: 'POST',
+						body: new FormData(claim)
+					});
 				}
 			})
 		}

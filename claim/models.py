@@ -9,6 +9,7 @@ class Claim(models.Model):
     parent_claim = models.CharField(max_length=1024)
     class_claim = models.IntegerField()
     concert_claim = models.CharField(max_length=1024)
-    sity_claim = models.CharField(max_length=1024)
+    city_claim = models.CharField(max_length=1024)
     prog_claim = models.TextField()
     url_claim = models.URLField()
+    place_claim = models.IntegerField()

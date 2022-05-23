@@ -29,7 +29,7 @@ def create_report(claims):
     for i, claim in enumerate(claims):
         hdr_cells = table.rows[i].cells
         hdr_cells[0].paragraphs[0].add_run(str(i + 1)).bold = False
-        hdr_cells[1].paragraphs[0].add_run(claim.sity_claim).bold = True
+        hdr_cells[1].paragraphs[0].add_run(claim.city_claim).bold = True
         hdr_cells[1].paragraphs[0].add_run('\n' + claim.name_claim + ', ')
         hdr_cells[1].paragraphs[0].add_run(str(claim.class_claim) + ' кл. ')
         hdr_cells[1].paragraphs[0].add_run('(' + str(claim.select_claim) + ')')
@@ -51,13 +51,13 @@ def index(request):
         parent_cl = request.POST.get('parent_claim')
         class_cl = request.POST.get('class_claim')
         concert_cl = request.POST.get('concert_claim')
-        sity_cl = request.POST.get('sity_claim')
+        city_cl = request.POST.get('city_claim')
         prog_cl = request.POST.get('prog_claim')
         url_cl = request.POST.get('url_claim')
 
         data = {'type': type_cl, 'select': select_cl, 'name': name_cl,
                 'parent': parent_cl, 'class': class_cl, 'concert': concert_cl,
-                'sity': sity_cl, 'prog': prog_cl, 'url': url_cl
+                'city': city_cl, 'prog': prog_cl, 'url': url_cl
                 }
         claim = Claim.objects.create(type_claim=type_cl,
                                     select_claim=select_cl,
@@ -65,7 +65,7 @@ def index(request):
                                     parent_claim=parent_cl,
                                     class_claim=class_cl,
                                     concert_claim=concert_cl,
-                                    sity_claim=sity_cl,
+                                    sity_claim=city_cl,
                                     prog_claim=prog_cl,
                                     url_claim=url_cl)
         data['id'] = claim.id
