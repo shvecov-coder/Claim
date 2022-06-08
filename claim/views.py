@@ -45,6 +45,7 @@ def create_report(claims):
 
 def index(request):
     if request.method == 'POST':
+        print('POST POST POST')
         type_cl = request.POST.get('type_claim')
         select_cl = request.POST.get('select_claim')
         name_cl = request.POST.get('name_claim')
@@ -65,9 +66,10 @@ def index(request):
                                     parent_claim=parent_cl,
                                     class_claim=class_cl,
                                     concert_claim=concert_cl,
-                                    sity_claim=city_cl,
+                                    city_claim=city_cl,
                                     prog_claim=prog_cl,
-                                    url_claim=url_cl)
+                                    url_claim=url_cl,
+                                    place_claim=0)
         data['id'] = claim.id
         return render(request, 'apply.html', context=data)
     return render(request, 'index.html')
@@ -80,3 +82,35 @@ def admin(request):
     else:
         claims = Claim.objects.all()
         return render(request, 'admin.html', context={'claims': claims})
+
+def apply(request):
+    if request.method == 'POST':
+        print('POST POST POST')
+        type_cl = request.POST.get('type_claim')
+        select_cl = request.POST.get('select_claim')
+        name_cl = request.POST.get('name_claim')
+        parent_cl = request.POST.get('parent_claim')
+        class_cl = request.POST.get('class_claim')
+        concert_cl = request.POST.get('concert_claim')
+        city_cl = request.POST.get('city_claim')
+        prog_cl = request.POST.get('prog_claim')
+        url_cl = request.POST.get('url_claim')
+
+        data = {'type': type_cl, 'select': select_cl, 'name': name_cl,
+                'parent': parent_cl, 'class': class_cl, 'concert': concert_cl,
+                'city': city_cl, 'prog': prog_cl, 'url': url_cl
+                }
+        claim = Claim.objects.create(type_claim=type_cl,
+                                    select_claim=select_cl,
+                                    name_claim=name_cl,
+                                    parent_claim=parent_cl,
+                                    class_claim=class_cl,
+                                    concert_claim=concert_cl,
+                                    city_claim=city_cl,
+                                    prog_claim=prog_cl,
+                                    url_claim=url_cl,
+                                    place_claim=0)
+        data['id'] = claim.id
+        return render(request, 'apply.html', context=data)
+    else:
+        return HttpResponse('Error')

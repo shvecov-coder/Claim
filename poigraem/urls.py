@@ -18,6 +18,7 @@ from django.urls import path
 from claim import views
 
 urlpatterns = [
+    path('apply/', views.apply),
     path('admin/', views.admin),
     path('', views.index, name='home'),
 ]
