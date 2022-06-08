@@ -88,7 +88,7 @@
 				cancelButtonText: 'Закрыть',
 			}).then((result) => {
 				if (result.isConfirmed) {
-					await fetch('127.0.0.1:8000', {
+					let promis = await fetch('apply/', {
 						method: 'POST',
 						body: new FormData(claim)
 					});
