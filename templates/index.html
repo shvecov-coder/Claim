@@ -1,4 +1,4 @@
-<!-- Version: 0.2 -->
+<!-- Version: 0.3 -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
@@ -29,7 +29,7 @@
 				<h2 class="claim__title">
 					Заявка на участие
 				</h2>
-				<form class="form" method="post" name="claim" action="">
+				<form class="form" id="myform" method="post" name="claim" action="">
 					{% csrf_token %}
 					<p class="type-claim">Формат участия</p>
 					<div class="form-checked">
@@ -43,13 +43,13 @@
 						<label for="checked-online">Видео</label>
 						<div class="toggle">
 							<input class="style-input" type="url" name="url_claim" placeholder="Ссылка"
-								autocomplete="off">
+							autocomplete="off">
 						</div>
 					</div>
 					<input class="style-input" type="text" name="name_claim"
-						placeholder="ФИО участника / название коллектива" autocomplete="off">
+					placeholder="ФИО участника / название коллектива" autocomplete="off">
 					<input class="style-input" type="text" name="class_claim" placeholder="Класс / Курс"
-						autocomplete="off">
+					autocomplete="off">
 					<select class="combo-box" name="select_claim">
 						<option disabled selected hidden>Выберите номинацию</option>
 						<option value="баян">Баян</option>
@@ -62,21 +62,54 @@
 						<option value="оркестр">Оркестр</option>
 					</select>
 					<input class="style-input" type="text" name="parent_claim"
-						placeholder="Преподаватель / Руководитель" autocomplete="off">
+					placeholder="Преподаватель / Руководитель" autocomplete="off">
 					<input class="style-input" type="text" name="concert_claim" placeholder="Концертмейстер"
-						autocomplete="off">
+					autocomplete="off">
 					<input class="style-input" type="text" name="city_claim" placeholder="Город / учебное заведение"
-						autocomplete="off">
+					autocomplete="off">
 					<textarea class="form-textarea" name="prog_claim" cols="30" rows="30"
-						placeholder="Программа"></textarea>
-					<!-- <input class="form-submit" type="submit" name="submit" value="Подать заявку"> -->
-					<a class="form-submit" name="submit" href="javascript:VerificationClaim()">Подать заявку</a>
-			</div>
+					placeholder="Программа"></textarea>
+					
+					<a class="form-submit" href="javascript:OpenModalWindow()">Подать заявку</a>
+				</div>
 			</form>
+			
 		</div>
 	</section>
+	<div class="modal-window">
+		<div class="modal-window__content">
+			<div class="modal-window__body">
+				<div class="modal-wdinow__img">
+					<svg width="100" height="100" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style> .cls-1{fill:#595959;}</style></defs><title/><g data-name="Layer 58" id="Layer_58"><path class="cls-1" d="M16,26a2,2,0,1,1,2-2A2,2,0,0,1,16,26Zm0-2Z"/><path class="cls-1" d="M16,20a1,1,0,0,1-1-1V11a1,1,0,0,1,2,0v8A1,1,0,0,1,16,20Z"/><path class="cls-1" d="M27.78,30H4.22a3.19,3.19,0,0,1-2.77-1.57,3.13,3.13,0,0,1-.06-3.13L13.17,3.67a3.23,3.23,0,0,1,5.66,0L30.61,25.3a3.13,3.13,0,0,1-.06,3.13A3.19,3.19,0,0,1,27.78,30ZM16,4a1.18,1.18,0,0,0-1.07.63L3.15,26.25a1.12,1.12,0,0,0,0,1.16,1.19,1.19,0,0,0,1,.59H27.78a1.19,1.19,0,0,0,1-.59,1.12,1.12,0,0,0,0-1.16L17.07,4.63A1.18,1.18,0,0,0,16,4Z"/></g></svg>
+				</div>
+				<div class="modal-wdinow__title">
+					Внимание!
+				</div>
+				<div class="modal-wdinow__text">
+					Перепроверите введенные данные на ошибки. Исправить их будет невозможно.
+				</div>
+				<div class="modal-wdinow__button">
+					<input class="modal-btn modal-btn--blue" form="myform" type="submit" name="submit" value="Отправить">
+					
+					<button class="modal-btn modal-cancel" onclick="CloseModalWindow()">
+						Закрыть
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>	
 
 	<script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+	
+
+
+
+
+
+
+
+
+
 	<script>
 		function VerificationClaim() {
 			Swal.fire({
@@ -88,12 +121,20 @@
 				cancelButtonText: 'Закрыть',
 			}).then((result) => {
 				if (result.isConfirmed) {
-					let promis = await fetch('apply/', {
-						method: 'POST',
-						body: new FormData(claim)
-					});
+					
 				}
 			})
+		}
+
+		/* открытие окна */
+		function OpenModalWindow() {
+			document.getElementsByClassName('modal-window')[0].classList.add('modal--active');
+			document.getElementsByTagName("body")[0].style = "overflow: hidden;"
+		}
+		/* закрыть */
+		function CloseModalWindow() {
+			document.getElementsByClassName('modal-window')[0].classList.remove('modal--active');
+			document.getElementsByTagName("body")[0].style = ""
 		}
 
 	</script>
