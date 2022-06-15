@@ -83,9 +83,14 @@ def admin(request):
         claims = Claim.objects.all()
         return render(request, 'admin.html', context={'claims': claims})
 
+def report(request):
+    return render(request, 'report.html')
+
+def excel(request):
+    return render(request, 'excel.html')
+
 def apply(request):
     if request.method == 'POST':
-        print('POST POST POST')
         type_cl = request.POST.get('type_claim')
         select_cl = request.POST.get('select_claim')
         name_cl = request.POST.get('name_claim')
