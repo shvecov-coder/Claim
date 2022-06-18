@@ -83,8 +83,8 @@ def admin(request):
         claims = Claim.objects.all()
         return render(request, 'admin.html', context={'claims': claims})
 
-def report(request):
-    return render(request, 'report.html')
+def generate(request):
+    return render(request, 'generate.html')
 
 def excel(request):
     return render(request, 'excel.html')
