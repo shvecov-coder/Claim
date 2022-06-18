@@ -20,5 +20,7 @@ from claim import views
 urlpatterns = [
     path('apply/', views.apply),
     path('admin/', views.admin),
+    path('admin/generate/', views.generate),
+    path('admin/excel/', views.excel),
     path('', views.index, name='home'),
 ]
