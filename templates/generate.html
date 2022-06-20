@@ -1,12 +1,32 @@
+<!-- Version: 0.1 -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GENERATE</title>
+    <title>Generate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_style.css' %}">
 </head>
 <body>
-    <h1>GENERATE</h1>
+    <div class="content-downloader">
+        <div class="content-downloader__inner">
+            <input class="inout-file" name="myFile" type="file">
+            <div class="content-button">
+                <a href="javascript:(0)" class="btn create__prog">
+                    Создать программу
+                </a>
+                <a href="javascript:(0)" class="btn create__diplom">
+                    Создать дипломы
+                </a>
+                <a href="javascript:(0)" class="btn create_blagodarnost">
+                    Создать благодарности
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
