@@ -1,4 +1,4 @@
-<!-- Version: 0.3 -->
+<!-- Version: 0.4 -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
@@ -98,46 +98,7 @@
 			</div>
 		</div>
 	</div>	
-
-	<script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
-	
-
-
-
-
-
-
-
-
-
-	<script>
-		function VerificationClaim() {
-			Swal.fire({
-				icon: 'question',
-				title: 'Внимание!',
-				text: 'Перепроверите введенные данные на ошибки. Исправить их будет невозможно.',
-				showCancelButton: true,
-				confirmButtonText: 'Продолжить',
-				cancelButtonText: 'Закрыть',
-			}).then((result) => {
-				if (result.isConfirmed) {
-					
-				}
-			})
-		}
-
-		/* открытие окна */
-		function OpenModalWindow() {
-			document.getElementsByClassName('modal-window')[0].classList.add('modal--active');
-			document.getElementsByTagName("body")[0].style = "overflow: hidden;"
-		}
-		/* закрыть */
-		function CloseModalWindow() {
-			document.getElementsByClassName('modal-window')[0].classList.remove('modal--active');
-			document.getElementsByTagName("body")[0].style = ""
-		}
-
-	</script>
+	<script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
