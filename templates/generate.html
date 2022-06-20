@@ -14,7 +14,17 @@
 <body>
     <div class="content-downloader">
         <div class="content-downloader__inner">
-            <input class="inout-file" name="myFile" type="file">
+            <div class="upload-inner">
+              <input class="input-fileUpload" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  />  
+              <div class="custom-upload">
+                <button class="btn button-fileUpload">
+                    Выбрать файл
+                  </button>
+                  <span class="fileUpload-text">
+                    Файл еще не выбран.
+                  </span>
+              </div>
+            </div>
             <div class="content-button">
                 <a href="javascript:(0)" class="btn create__prog">
                     Создать программу
@@ -28,5 +38,6 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
