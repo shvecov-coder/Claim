@@ -1,12 +1,34 @@
+<!-- Version: 0.1 -->
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel</title>
+    <title>All Claim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_style.css' %}">
 </head>
 <body>
-    <h1>EXCEL</h1>
+    <section class="excel">
+        <div class="content-downloader">
+            <div class="content-downloader__inner">
+                <img class="img-excel" src="{% static 'images/microsoft_office_excel.png' %}" alt="microsoft office excel">
+                <p class="excel-name">
+                    Имя файла EXCEL (можно будет убрать)
+                </p>
+                <div class="excel-buttons">
+                    <a href="#" class="btn">
+                        Скачать файл
+                    </a>
+                    <a href="#" class="btn">
+                        Назад
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
