@@ -6,6 +6,7 @@ import os
 from django.http import HttpResponse
 import random
 import docx
+import xlsxwriter
 
 # Create your views here.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -91,7 +92,41 @@ def generate(request):
     return render(request, 'generate.html')
 
 def excel(request):
-    return render(request, 'excel.html')
+    SAVE_NAME = str(random.randint(1, 1001)) + '.xlsx'
+    DIR = os.path.abspath(str(BASE_DIR) + '/static/temp_files/' + SAVE_NAME)
+
+    xmlfile = xlsxwriter.Workbook(DIR)
+    sheet = xmlfile.add_worksheet('Data')
+
+    sheet.write(0, 0,  'id')
+    sheet.write(0, 1, 'Формат')
+    sheet.write(0, 2, 'Номинация')
+    sheet.write(0, 3, 'Участник')
+    sheet.write(0, 4, 'Преподаватель')
+    sheet.write(0, 5, 'Класс')
+    sheet.write(0, 6, 'Концертмейстер')
+    sheet.write(0, 7, 'Заведение')
+    sheet.write(0, 8, 'Программа')
+    sheet.write(0, 9, 'Ссылка')
+    sheet.write(0, 10, 'Место')
+
+    claims = Claim.objects.all()
+
+    for row, claim in enumerate(claims):
+        sheet.write(row + 1, 0, claim.id)
+        sheet.write(row + 1, 1, claim.type_claim)
+        sheet.write(row + 1, 2, claim.select_claim)
+        sheet.write(row + 1, 3, claim.name_claim)
+        sheet.write(row + 1, 4, claim.parent_claim)
+        sheet.write(row + 1, 5, claim.class_claim)
+        sheet.write(row + 1, 6, claim.concert_claim)
+        sheet.write(row + 1, 7, claim.city_claim)
+        sheet.write(row + 1, 8, claim.prog_claim)
+        sheet.write(row + 1, 9, claim.url_claim)
+        sheet.write(row + 1, 10, '')
+
+    xmlfile.close()
+    return render(request, 'excel.html', context={'dir': SAVE_NAME})
 
 def word(request):
     claims = Claim.objects.all()
