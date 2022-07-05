@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', views.admin),
     path('admin/generate/', views.generate),
     path('admin/excel/', views.excel),
-    path('', views.index, name='home'),
+    path('admin/generate/word/', views.word),
+    path('', views.index, name='home')
 ]

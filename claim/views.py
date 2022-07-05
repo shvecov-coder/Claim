@@ -17,6 +17,7 @@ def create_report(claims):
         dir = os.path.abspath(str(BASE_DIR) + '/static/template_doc/программа_template.docx')
         currentDocument = docx.Document(dir)
     except FileNotFoundError:
+        print('FileNotFoundError...')
         return
     
     table = currentDocument.add_table(rows=len(claims), cols=3)
@@ -40,8 +41,11 @@ def create_report(claims):
     try:
         dir = os.path.abspath(str(BASE_DIR) + ('/static/temp_files/' + SAVE_NAME))
         currentDocument.save(dir)
+        dirs = [SAVE_NAME, '/static/temp_files/' + SAVE_NAME]
+        return dirs
     except:
-        return
+        print('Dont save file...')
+        return 'Error'
 
 def index(request):
     if request.method == 'POST':
@@ -88,6 +92,11 @@ def generate(request):
 
 def excel(request):
     return render(request, 'excel.html')
+
+def word(request):
+    claims = Claim.objects.all()
+    dirs = create_report(claims)
+    return render(request, 'word.html', context={'dir': dirs})
 
 def apply(request):
     if request.method == 'POST':

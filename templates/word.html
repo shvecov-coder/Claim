@@ -2,7 +2,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <title>All Claim</title>
@@ -17,13 +16,13 @@
             <div class="content-downloader__inner">
                 <img class="img-excel" src="{% static 'images/microsoft_office_word.png' %}" alt="microsoft office excel">
                 <p class="excel-name">
-                    Имя файла WORD (можно будет убрать)
+                    {{dir.0}}
                 </p>
                 <div class="excel-buttons">
-                    <a href="#" class="btn"> 
+                    <a href="{{dir.1}}" download="" class="btn"> 
                         Скачать файл
                     </a>
-                    <a href="../../admin" class="btn">
+                    <a href="../" class="btn">
                         Назад
                     </a>
                 </div>

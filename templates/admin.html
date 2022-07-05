@@ -2,7 +2,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <title>All Claim</title>
@@ -11,12 +10,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/admin_style.css' %}">
 </head>
-
 <body>
     <section class="admin">
-        <a href="generate" class="btn create__prog">Создать программу</a>
-<!--         <a href="#" class="btn create__diplom">Создать Дипломы</a>
-        <a href="#" class="btn create_blagodarnost">Создать Благодарности</a> -->
+        <a href="generate" class="btn create__prog">Генерация файлов -></a>
         <a href="excel" class="btn down_excel">Экспортировать в EXCEL</a>
         <table class="list__claim">
             <tr>
@@ -48,5 +44,4 @@
         </table>
     </section>
 </body>
-
 </html>
