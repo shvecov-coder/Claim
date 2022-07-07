@@ -12,24 +12,22 @@
 </head>
 <body>
     <div class="content-downloader">
-        <form class="generate-form" action="" method="post">
+        <form class="generate-form" method="post">
             {% csrf_token %}
             <div class="content-downloader__inner">
                 <div class="upload-inner">
                 <input class="input-fileUpload" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  />  
                 <div class="custom-upload">
-                    <button class="btn button-fileUpload">
+                    <a href="#" class="btn button-fileUpload">
                         Выбрать файл
-                    </button>
+                    </a>
                     <span class="fileUpload-text">
                         Файл еще не выбран.
                     </span>
                 </div>
                 </div>
                 <div class="content-button">
-                    <a href="word" class="btn create__prog">
-                        Создать программу
-                    </a>
+                    <input type="submit" class="btn create__prog" value="Создать программу">
                     <a href="javascript:(0)" class="btn create__diplom">
                         Создать дипломы
                     </a>
