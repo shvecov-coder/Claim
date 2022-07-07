@@ -12,11 +12,11 @@
 </head>
 <body>
     <div class="content-downloader">
-        <form class="generate-form" method="post">
+        <form class="generate-form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="content-downloader__inner">
                 <div class="upload-inner">
-                <input class="input-fileUpload" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  />  
+                <input class="input-fileUpload" type="file" name="fileXlsx" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  />  
                 <div class="custom-upload">
                     <a href="#" class="btn button-fileUpload">
                         Выбрать файл

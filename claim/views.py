@@ -7,6 +7,7 @@ from django.http import HttpResponse
 import random
 import docx
 import xlsxwriter
+import openpyxl
 
 # Create your views here.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,14 +32,14 @@ def create_report(claims):
     for i, claim in enumerate(claims):
         hdr_cells = table.rows[i].cells
         hdr_cells[0].paragraphs[0].add_run(str(i + 1)).bold = False
-        hdr_cells[1].paragraphs[0].add_run(claim.city_claim).bold = True
-        hdr_cells[1].paragraphs[0].add_run('\n' + claim.name_claim + ', ')
-        hdr_cells[1].paragraphs[0].add_run(str(claim.class_claim) + ' кл. ')
-        hdr_cells[1].paragraphs[0].add_run('(' + str(claim.select_claim) + ')')
-        hdr_cells[1].paragraphs[0].add_run('\nпреп. ' + claim.parent_claim)
-        if claim.concert_claim != '':
-            hdr_cells[1].paragraphs[0].add_run('\nконц. ' + claim.concert_claim)
-        hdr_cells[2].text = claim.prog_claim
+        hdr_cells[1].paragraphs[0].add_run(claim[0]).bold = True
+        hdr_cells[1].paragraphs[0].add_run('\n' + claim[1] + ', ')
+        hdr_cells[1].paragraphs[0].add_run(str(claim[2]) + ' кл. ')
+        hdr_cells[1].paragraphs[0].add_run('(' + str(claim[3]) + ')')
+        hdr_cells[1].paragraphs[0].add_run('\nпреп. ' + claim[4])
+        if claim[5] != None:
+            hdr_cells[1].paragraphs[0].add_run('\nконц. ' + claim[5])
+        hdr_cells[2].text = claim[6]
     try:
         dir = os.path.abspath(str(BASE_DIR) + ('/static/temp_files/' + SAVE_NAME))
         currentDocument.save(dir)
@@ -80,15 +81,28 @@ def index(request):
     return render(request, 'index.html')
 
 def admin(request):
-    if request.GET.get('code') == 'report':
-        claims = Claim.objects.all()
-        create_report(claims)
-        return HttpResponse('Report Success')
-    else:
-        claims = Claim.objects.all()
-        return render(request, 'admin.html', context={'claims': claims})
+    claims = Claim.objects.all()
+    return render(request, 'admin.html', context={'claims': claims})
 
 def generate(request):
+    if request.method == 'POST':
+        claims = []
+        xl_file = openpyxl.load_workbook(request.FILES['fileXlsx'])
+        sheet = xl_file['Data']
+        for i, row in enumerate(sheet.rows):
+            if i == 0:
+                continue
+            claim = []
+            claim.append(row[7].value)
+            claim.append(row[3].value)
+            claim.append(row[5].value)
+            claim.append(row[2].value)
+            claim.append(row[4].value)
+            claim.append(row[6].value)
+            claim.append(row[8].value)
+            claims.append(claim)
+        dirs = create_report(claims)
+        return render(request, 'word.html', context={'dir': dirs})
     return render(request, 'generate.html')
 
 def excel(request):
