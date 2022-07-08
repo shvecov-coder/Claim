@@ -1,10 +1,10 @@
 function OpenModalWindow() {
 	document.querySelector('.modal-window').classList.add('modal--active');
-	document.querySelector('body').style = "overflow: hidden;"
+	document.querySelector('body').style = "overflow: hidden;";
 }
 function CloseModalWindow() {
 	document.querySelector('.modal-window').classList.remove('modal--active');
-	document.querySelector('body').style = ""
+	document.querySelector('body').removeAttribute('style');
 }
 
 const realFileBtn = document.querySelector('.input-fileUpload');
