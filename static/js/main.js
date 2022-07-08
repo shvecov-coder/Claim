@@ -10,9 +10,19 @@ function CloseModalWindow() {
 const realFileBtn = document.querySelector('.input-fileUpload');
 const customBtn = document.querySelector('.button-fileUpload');
 const customText = document.querySelector('.fileUpload-text');
+const generateForm = document.querySelector('.generate-form');
+const createProg = document.querySelector('.create__prog');
 
 customBtn.addEventListener('click', function () {
 	realFileBtn.click();
+})
+
+createProg.addEventListener('click', function() {
+	if (realFileBtn.value !== "") {
+		generateForm.submit();
+	} else {
+		console.log('ФАЙЛ ПУСТ')
+	}
 })
 
 realFileBtn.addEventListener('change', function () {
@@ -21,6 +31,7 @@ realFileBtn.addEventListener('change', function () {
 	fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
 	if (validExts.indexOf(fileExt) < 0) {
 		customText.innerHTML = 'Ошибка! Файл должен быть ' + validExts.toString();
+		realFileBtn.value = "";
 		return false;
 	} else {
 		if (realFileBtn.value) {

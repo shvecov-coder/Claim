@@ -145,6 +145,7 @@ img {
 .btn {
 	display: inline-block;
 	font-family: inherit;
+	font-size: inherit;
 	text-decoration: none;
 	background-color: #ffffff;
 	padding: 10px 20px;
